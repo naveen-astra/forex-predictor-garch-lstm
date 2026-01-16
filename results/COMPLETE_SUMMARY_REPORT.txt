@@ -1,0 +1,85 @@
+
+==========================================================================================
+               FOREX GARCH-LSTM PROJECT - COMPLETE RESULTS SUMMARY
+==========================================================================================
+
+Project: Intelligent FOREX Exchange Rate Forecasting using Hybrid GARCH-LSTM
+Author: Naveen Astra
+Date: 2026-01-17 02:05:47
+Test Period: 2023-09-14 00:00:00 to 2025-12-30 00:00:00
+Test Samples: 595
+
+==========================================================================================
+PERFORMANCE METRICS
+==========================================================================================
+
+1. GARCH(1,1) Model:
+   ├─ MSE:  0.000024
+   ├─ MAE:  0.003543
+   ├─ RMSE: 0.004862
+   └─ Directional Accuracy: 51.60%
+
+2. LSTM Baseline (13 features):
+   ├─ MSE:  0.000004
+   ├─ MAE:  0.001634
+   ├─ RMSE: 0.002067
+   └─ Directional Accuracy: 77.78%
+
+3. Hybrid GARCH-LSTM (14 features):
+   ├─ MSE:  0.000002
+   ├─ MAE:  0.000945
+   ├─ RMSE: 0.001378
+   └─ Directional Accuracy: 86.20%
+
+==========================================================================================
+KEY FINDINGS
+==========================================================================================
+
+1. Model Ranking (by MSE):
+   🥇 Hybrid GARCH-LSTM (0.000002)
+   🥈 LSTM Baseline (0.000004)
+   🥉 GARCH(1,1) (0.000024)
+
+2. Hybrid Improvements Over LSTM:
+   ├─ MSE Reduction:  55.60%
+   ├─ MAE Reduction:  42.12%
+   └─ Directional Accuracy Gain: +8.42% points
+
+3. Statistical Significance:
+   ✓ Diebold-Mariano tests confirm significant differences
+   ✓ All models exceed random walk baseline (50%)
+
+4. Regime Analysis Insight:
+   ✓ Hybrid shows greatest improvement in HIGH volatility regime
+   ✓ Validates hypothesis: GARCH volatility enhances turbulent market predictions
+   ✓ Best improvement: 99.98% in high volatility
+
+==========================================================================================
+OUTPUT FILES GENERATED
+==========================================================================================
+
+Data:
+   ✓ results/predictions/all_predictions.csv
+
+Tables:
+   ✓ results/tables/model_comparison.csv
+   ✓ results/tables/dm_test_results.csv
+   ✓ results/tables/regime_analysis.csv
+
+Figures (300 DPI, publication-quality):
+   ✓ results/figures/predictions_vs_actual.png
+   ✓ results/figures/model_comparison_bars.png
+   ✓ results/figures/error_distributions.png
+   ✓ results/figures/regime_performance_heatmap.png
+   ✓ results/figures/volatility_clustering.png
+   ✓ results/figures/hybrid_improvement_by_regime.png
+
+==========================================================================================
+PROJECT STATUS: ✓ COMPLETE
+==========================================================================================
+
+All outputs generated successfully. Results ready for academic review.
+
+Repository: https://github.com/naveen-astra/forex-predictor-garch-lstm
+Paper Draft: docs/paper_draft_sections.md
+
