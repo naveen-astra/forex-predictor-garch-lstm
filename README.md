@@ -384,10 +384,6 @@ export PYTHONPATH="${PYTHONPATH}:/path/to/forex-project"
 
 ## Contact & Support
 
-**Project Maintainer:** Research Team  
-**Institution:** Amrita Vishwa Vidyapeetham  
-**Course:** Big Data Analytics (Sem 6)  
-**Instructor:** Dr. Sreeja B.P.
 
 For questions or issues:
 1. Check the `docs/` folder for detailed documentation
@@ -405,7 +401,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Acknowledgments
 
 - **Reference Paper**: [Hybrid LSTM-GARCH Model](https://www.sciencedirect.com/science/article/pii/S0957417418301416)
-- **Reference Repository**: [tlemenestrel/LSTM_GARCH](https://github.com/tlemenestrel/LSTM_GARCH)
 - **Data Sources**: Yahoo Finance, Alpha Vantage
 - **Libraries**: TensorFlow, PyFlux, Statsmodels communities
 
