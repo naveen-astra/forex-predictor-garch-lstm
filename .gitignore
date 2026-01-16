@@ -1,0 +1,100 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# Virtual Environments
+venv/
+ENV/
+env/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Data (keep structure but ignore actual data files)
+data/raw/*.csv
+data/raw/*.parquet
+data/processed/*.csv
+data/processed/*.parquet
+data/external/*.csv
+data/external/*.parquet
+
+# Keep .gitkeep files to maintain folder structure
+!**/.gitkeep
+
+# Models (large files)
+models/saved_models/*.h5
+models/saved_models/*.pkl
+models/checkpoints/*.ckpt
+models/checkpoints/*.hdf5
+
+# Results (can be regenerated)
+results/figures/*.png
+results/figures/*.jpg
+results/figures/*.pdf
+results/tables/*.csv
+results/predictions/*.csv
+
+# Logs
+*.log
+logs/
+
+# API Keys and Secrets
+.env
+config_secret.py
+*_secret.py
+api_keys.txt
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Documentation build files
+docs/_build/
+docs/.doctrees/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
