@@ -1,0 +1,4 @@
+Comparison,DM_Statistic,p_value,Significant_5%,Winner
+Hybrid vs LSTM,-15.653148504060903,0.0,Yes,Hybrid
+Hybrid vs GARCH,-9.294757608073422,0.0,Yes,Hybrid
+LSTM vs GARCH,-8.255559222128952,2.220446049250313e-16,Yes,LSTM
