@@ -1,0 +1,9 @@
+FOREX Data Metadata
+============================================================
+currency_pair: EURUSD=X
+source: yfinance
+start_date: 2010-01-01
+end_date: 2025-12-31
+fetch_date: 2026-01-17 01:37:53
+num_records: 4164
+columns: ['Datetime', 'Open', 'High', 'Low', 'Close', 'Volume']
