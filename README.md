@@ -3,7 +3,7 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 📋 Project Overview
+## Project Overview
 
 This project implements a hybrid GARCH-LSTM architecture for forecasting FOREX exchange rate volatility, specifically focusing on the EUR/USD currency pair. The research combines traditional econometric models (GARCH) with deep learning (LSTM) to leverage the strengths of both approaches for superior forecasting performance.
 
@@ -16,7 +16,7 @@ This project implements a hybrid GARCH-LSTM architecture for forecasting FOREX e
 
 ---
 
-## 🎯 Research Objectives
+## Research Objectives
 
 1. Implement and validate a hybrid GARCH-LSTM architecture for FOREX forecasting
 2. Systematically compare performance against baseline models (Naive, ARIMA, GARCH-only, LSTM-only)
@@ -26,7 +26,7 @@ This project implements a hybrid GARCH-LSTM architecture for forecasting FOREX e
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 forex-project/
@@ -84,7 +84,7 @@ forex-project/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -122,7 +122,7 @@ forex-project/
 
 ---
 
-## 📊 Data Acquisition
+## Data Acquisition
 
 ### Step 1: Fetch FOREX Data
 
@@ -171,7 +171,7 @@ python src/data/preprocess.py
 
 ---
 
-## 🔬 Exploratory Data Analysis
+## Exploratory Data Analysis
 
 ### Run EDA Notebook
 
@@ -189,14 +189,14 @@ jupyter notebook notebooks/01_data_exploration.ipynb
 5. **Volatility Patterns**: Rolling volatility characteristics
 
 **Key Findings (Expected):**
-- ✓ Price levels are non-stationary
-- ✓ Log returns are stationary (suitable for GARCH)
-- ✓ Returns exhibit fat tails and volatility clustering
-- ✓ Data is clean with comprehensive features
+- Price levels are non-stationary
+- Log returns are stationary (suitable for GARCH)
+- Returns exhibit fat tails and volatility clustering
+- Data is clean with comprehensive features
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 All hyperparameters and settings are centralized in `src/utils/config.py`:
 
@@ -241,41 +241,41 @@ Edit `src/utils/config.py` directly. All scripts and notebooks read from this ce
 
 ---
 
-## 🔄 Workflow Overview
+## Workflow Overview
 
-### Phase 1: Data Preparation ✅ (Current Status)
-- [x] Project structure setup
-- [x] Configuration file with random seeds
-- [x] Data fetching module
-- [x] Preprocessing pipeline
-- [x] Initial EDA notebook
+### Phase 1: Data Preparation
+- Project structure setup
+- Configuration file with random seeds
+- Data fetching module
+- Preprocessing pipeline
+- Initial EDA notebook
 
-### Phase 2: GARCH Modeling (Next)
-- [ ] Implement GARCH(1,1) model using PyFlux/arch
-- [ ] Generate rolling predictions
-- [ ] Generate forward-looking predictions
-- [ ] Evaluate GARCH-only performance
+### Phase 2: GARCH Modeling
+- Implement GARCH(1,1) model using PyFlux/arch
+- Generate rolling predictions
+- Generate forward-looking predictions
+- Evaluate GARCH-only performance
 
 ### Phase 3: LSTM Modeling
-- [ ] Build baseline LSTM (without GARCH features)
-- [ ] Implement time-lagging mechanism
-- [ ] Train and validate LSTM
-- [ ] Hyperparameter tuning
+- Build baseline LSTM (without GARCH features)
+- Implement time-lagging mechanism
+- Train and validate LSTM
+- Hyperparameter tuning
 
 ### Phase 4: Hybrid Model
-- [ ] Integrate GARCH predictions as LSTM features
-- [ ] Train hybrid GARCH-LSTM model
-- [ ] Compare all model variants
+- Integrate GARCH predictions as LSTM features
+- Train hybrid GARCH-LSTM model
+- Compare all model variants
 
 ### Phase 5: Evaluation & Publication
-- [ ] Comprehensive benchmarking
-- [ ] Statistical significance tests
-- [ ] Generate publication-ready figures
-- [ ] Write methodology and results sections
+- Comprehensive benchmarking
+- Statistical significance tests
+- Generate publication-ready figures
+- Write methodology and results sections
 
 ---
 
-## 🎓 Reproducibility Guidelines
+## Reproducibility Guidelines
 
 ### For Academic Publication
 
@@ -302,7 +302,7 @@ This ensures:
 
 ---
 
-## 📖 Key Concepts
+## Key Concepts
 
 ### Why GARCH?
 **GARCH (Generalized Autoregressive Conditional Heteroskedasticity)** models time-varying volatility:
@@ -339,7 +339,7 @@ Where:
 
 ---
 
-## 📚 Dependencies
+## Dependencies
 
 ### Core Libraries
 - **pandas** (2.0.3): Data manipulation
@@ -353,7 +353,7 @@ See `requirements.txt` for all dependencies with pinned versions.
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -382,7 +382,7 @@ export PYTHONPATH="${PYTHONPATH}:/path/to/forex-project"
 
 ---
 
-## 📞 Contact & Support
+## Contact & Support
 
 **Project Maintainer:** Research Team  
 **Institution:** Amrita Vishwa Vidyapeetham  
@@ -396,13 +396,13 @@ For questions or issues:
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **Reference Paper**: [Hybrid LSTM-GARCH Model](https://www.sciencedirect.com/science/article/pii/S0957417418301416)
 - **Reference Repository**: [tlemenestrel/LSTM_GARCH](https://github.com/tlemenestrel/LSTM_GARCH)
@@ -411,27 +411,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-## 📈 Project Roadmap
-
-**Version 1.0** (Current - Data Preparation)
-- ✅ Project setup and structure
-- ✅ Data acquisition pipeline
-- ✅ Preprocessing and feature engineering
-- ✅ Initial exploratory analysis
-
-**Version 2.0** (Next - Modeling)
-- ⏳ GARCH model implementation
-- ⏳ LSTM baseline development
-- ⏳ Hybrid model integration
-
-**Version 3.0** (Future - Publication)
-- ⏳ Comprehensive evaluation
-- ⏳ Statistical significance testing
-- ⏳ Paper writing and submission
-
----
-
-## 📊 Citation
+## Citation
 
 If you use this code in your research, please cite:
 
@@ -444,8 +424,3 @@ If you use this code in your research, please cite:
   note={Academic Project - Big Data Analytics}
 }
 ```
-
----
-
-**Last Updated:** January 16, 2026  
-**Status:** Phase 1 Complete - Data Preparation ✅
