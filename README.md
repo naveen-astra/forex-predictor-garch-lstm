@@ -41,9 +41,9 @@ forex-project/
 │   │   ├── fetch_data.py        # Data acquisition from Yahoo Finance/Alpha Vantage
 │   │   └── preprocess.py        # Data cleaning and feature engineering
 │   ├── models/
-│   │   ├── garch_model.py       # GARCH implementation
-│   │   ├── lstm_model.py        # LSTM architecture
-│   │   └── hybrid_model.py      # Hybrid GARCH-LSTM model
+│   │   ├── garch_model.py       # GARCH(1,1) implementation (Phase 2)
+│   │   ├── lstm_model.py        # LSTM baseline (Phase 3)
+│   │   └── hybrid_garch_lstm.py # Hybrid GARCH-LSTM model (Phase 4)
 │   ├── evaluation/
 │   │   ├── metrics.py           # Performance metrics (RMSE, MAE, R²)
 │   │   └── visualization.py     # Plotting utilities
@@ -52,12 +52,12 @@ forex-project/
 │       └── helpers.py           # Utility functions
 │
 ├── notebooks/
-│   ├── 01_data_exploration.ipynb     # Initial EDA and stationarity tests
-│   ├── 02_feature_engineering.ipynb  # Feature creation and analysis
-│   ├── 03_garch_modeling.ipynb       # GARCH model development
-│   ├── 04_lstm_modeling.ipynb        # LSTM model development
-│   ├── 05_hybrid_model.ipynb         # Hybrid model integration
-│   └── 06_evaluation_comparison.ipynb # Benchmarking and results
+│   ├── 01_data_exploration.ipynb        # Initial EDA and stationarity tests
+│   ├── 02_feature_engineering.ipynb     # Feature creation and analysis
+│   ├── 03_garch_modeling.ipynb          # GARCH model development (Phase 2)
+│   ├── 04_lstm_baseline.ipynb           # LSTM baseline (Phase 3)
+│   ├── 05_hybrid_garch_lstm.ipynb       # Hybrid model integration (Phase 4)
+│   └── 06_evaluation_comparison.ipynb   # Benchmarking and results (Phase 5)
 │
 ├── models/
 │   ├── saved_models/            # Trained model weights (.h5, .pkl)
@@ -250,28 +250,34 @@ Edit `src/utils/config.py` directly. All scripts and notebooks read from this ce
 - Preprocessing pipeline
 - Initial EDA notebook
 
-### Phase 2: GARCH Modeling
-- Implement GARCH(1,1) model using PyFlux/arch
-- Generate rolling predictions
-- Generate forward-looking predictions
-- Evaluate GARCH-only performance
+### Phase 2: GARCH Modeling (COMPLETE)
+- Implemented GARCH(1,1) model using arch package
+- Generated conditional volatility estimates
+- Comprehensive diagnostic testing (Ljung-Box, ARCH LM, Jarque-Bera)
+- Model comparison and robustness checks
+- Output: `train_data_with_garch.csv`, `val_data_with_garch.csv`, `test_data_with_garch.csv`
 
-### Phase 3: LSTM Modeling
-- Build baseline LSTM (without GARCH features)
-- Implement time-lagging mechanism
-- Train and validate LSTM
-- Hyperparameter tuning
+### Phase 3: LSTM Baseline (COMPLETE)
+- Built baseline LSTM without GARCH features (13 price-based features)
+- Architecture: 2-layer LSTM (200 units each), dropout 0.2, timesteps=4
+- Implemented sliding window sequence creation
+- Training with callbacks (early stopping, LR reduction, checkpoints)
+- Evaluation metrics: MSE, MAE, RMSE, directional accuracy
 
-### Phase 4: Hybrid Model
-- Integrate GARCH predictions as LSTM features
-- Train hybrid GARCH-LSTM model
-- Compare all model variants
+### Phase 4: Hybrid GARCH-LSTM (COMPLETE)
+- Integrated GARCH conditional volatility as 14th feature
+- Maintained identical LSTM architecture for fair comparison
+- Trained hybrid model with early stopping
+- Three-way comparison: GARCH-only vs LSTM-only vs Hybrid
+- Volatility regime analysis (high/low volatility performance)
+- Journal-ready documentation and interpretation
 
-### Phase 5: Evaluation & Publication
-- Comprehensive benchmarking
-- Statistical significance tests
-- Generate publication-ready figures
-- Write methodology and results sections
+### Phase 5: Final Evaluation & Report (NEXT)
+- Consolidate results from all models
+- Statistical significance testing (Diebold-Mariano)
+- Generate publication-ready figures and tables
+- Write comprehensive methodology and results sections
+- Economic evaluation (trading strategy simulation)
 
 ---
 
