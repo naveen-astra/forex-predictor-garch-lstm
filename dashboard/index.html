@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOREX GARCH-LSTM Predictor Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-chart-line"></i>
+                <span>FOREX GARCH-LSTM Predictor</span>
+            </div>
+            <div class="nav-links">
+                <a href="#overview" class="nav-link active">Overview</a>
+                <a href="#predictions" class="nav-link">Predictions</a>
+                <a href="#comparison" class="nav-link">Model Comparison</a>
+                <a href="#regime" class="nav-link">Regime Analysis</a>
+                <a href="#statistics" class="nav-link">Statistics</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="overview">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Intelligent FOREX Exchange Rate Forecasting
+                <span class="gradient-text">using Hybrid GARCH-LSTM</span>
+            </h1>
+            <p class="hero-subtitle">
+                Advanced deep learning framework combining volatility modeling with neural networks
+            </p>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 class="stat-value">86.20%</h3>
+                        <p class="stat-label">Directional Accuracy</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-arrow-trend-up"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 class="stat-value">55.6%</h3>
+                        <p class="stat-label">MSE Improvement</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 class="stat-value">595</h3>
+                        <p class="stat-label">Test Samples</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <i class="fas fa-chart-area"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 class="stat-value">99.98%</h3>
+                        <p class="stat-label">High Vol Improvement</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Model Performance Cards -->
+    <section class="section" id="performance">
+        <div class="container">
+            <h2 class="section-title">Model Performance Overview</h2>
+            <div class="performance-grid">
+                <!-- GARCH Model -->
+                <div class="model-card garch-card">
+                    <div class="model-header">
+                        <div class="model-icon">
+                            <i class="fas fa-wave-square"></i>
+                        </div>
+                        <h3>GARCH(1,1)</h3>
+                        <span class="model-badge">Statistical</span>
+                    </div>
+                    <div class="model-metrics">
+                        <div class="metric">
+                            <span class="metric-label">MSE</span>
+                            <span class="metric-value">0.000024</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">MAE</span>
+                            <span class="metric-value">0.003543</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">RMSE</span>
+                            <span class="metric-value">0.004862</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Accuracy</span>
+                            <span class="metric-value">51.60%</span>
+                        </div>
+                    </div>
+                    <div class="model-rank">
+                        <span class="rank-badge rank-3">🥉 Rank #3</span>
+                    </div>
+                </div>
+
+                <!-- LSTM Model -->
+                <div class="model-card lstm-card">
+                    <div class="model-header">
+                        <div class="model-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>LSTM Baseline</h3>
+                        <span class="model-badge">Deep Learning</span>
+                    </div>
+                    <div class="model-metrics">
+                        <div class="metric">
+                            <span class="metric-label">MSE</span>
+                            <span class="metric-value">0.000004</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">MAE</span>
+                            <span class="metric-value">0.001634</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">RMSE</span>
+                            <span class="metric-value">0.002067</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Accuracy</span>
+                            <span class="metric-value">77.78%</span>
+                        </div>
+                    </div>
+                    <div class="model-rank">
+                        <span class="rank-badge rank-2">🥈 Rank #2</span>
+                    </div>
+                </div>
+
+                <!-- Hybrid Model -->
+                <div class="model-card hybrid-card">
+                    <div class="model-header">
+                        <div class="model-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Hybrid GARCH-LSTM</h3>
+                        <span class="model-badge hybrid-badge">Hybrid</span>
+                    </div>
+                    <div class="model-metrics">
+                        <div class="metric">
+                            <span class="metric-label">MSE</span>
+                            <span class="metric-value">0.000002</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">MAE</span>
+                            <span class="metric-value">0.000945</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">RMSE</span>
+                            <span class="metric-value">0.001378</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Accuracy</span>
+                            <span class="metric-value">86.20%</span>
+                        </div>
+                    </div>
+                    <div class="model-rank">
+                        <span class="rank-badge rank-1">🏆 Best Model</span>
+                    </div>
+                    <div class="improvement-badge">
+                        <i class="fas fa-arrow-up"></i> 55.6% Better
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Predictions Visualization -->
+    <section class="section" id="predictions">
+        <div class="container">
+            <h2 class="section-title">Time Series Predictions</h2>
+            <div class="chart-container">
+                <div id="predictionsChart"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Model Comparison Charts -->
+    <section class="section gray-bg" id="comparison">
+        <div class="container">
+            <h2 class="section-title">Performance Comparison</h2>
+            <div class="comparison-grid">
+                <div class="chart-box">
+                    <h3 class="chart-title">MSE Comparison</h3>
+                    <canvas id="mseChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3 class="chart-title">MAE Comparison</h3>
+                    <canvas id="maeChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3 class="chart-title">Directional Accuracy</h3>
+                    <canvas id="accuracyChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3 class="chart-title">Error Distribution</h3>
+                    <canvas id="errorDistChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Regime Analysis -->
+    <section class="section" id="regime">
+        <div class="container">
+            <h2 class="section-title">Volatility Regime Analysis</h2>
+            <div class="regime-content">
+                <div class="regime-chart-container">
+                    <div id="regimeHeatmap"></div>
+                </div>
+                <div class="regime-insights">
+                    <h3>Key Insights</h3>
+                    <div class="insight-card">
+                        <div class="insight-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="insight-text">
+                            <h4>High Volatility Performance</h4>
+                            <p>Hybrid model shows <strong>99.98% improvement</strong> in high volatility regimes, validating the GARCH integration hypothesis.</p>
+                        </div>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="insight-text">
+                            <h4>Consistent Advantage</h4>
+                            <p>Hybrid GARCH-LSTM outperforms across all volatility regimes with <strong>40-100% improvements</strong>.</p>
+                        </div>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="insight-text">
+                            <h4>Volatility Modeling</h4>
+                            <p>GARCH volatility features provide crucial information during turbulent market conditions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistical Tests -->
+    <section class="section gray-bg" id="statistics">
+        <div class="container">
+            <h2 class="section-title">Statistical Significance Tests</h2>
+            <div class="stats-grid">
+                <div class="stats-card">
+                    <h3>Diebold-Mariano Test Results</h3>
+                    <table class="stats-table">
+                        <thead>
+                            <tr>
+                                <th>Comparison</th>
+                                <th>DM Statistic</th>
+                                <th>p-value</th>
+                                <th>Winner</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dmTestTable">
+                            <!-- Populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="stats-card">
+                    <h3>GARCH(1,1) Parameters</h3>
+                    <div class="param-list">
+                        <div class="param-item">
+                            <span class="param-name">ω (omega)</span>
+                            <span class="param-value">0.000005</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-name">α (alpha)</span>
+                            <span class="param-value">0.095</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-name">β (beta)</span>
+                            <span class="param-value">0.890</span>
+                        </div>
+                        <div class="param-item persistence">
+                            <span class="param-name">Persistence (α+β)</span>
+                            <span class="param-value">0.985</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Project Information</h4>
+                    <p>Intelligent FOREX Exchange Rate Forecasting using Hybrid GARCH-LSTM</p>
+                    <p><strong>Author:</strong> Naveen Babu</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Key Technologies</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> GARCH(1,1) Volatility Modeling</li>
+                        <li><i class="fas fa-check"></i> LSTM Deep Learning</li>
+                        <li><i class="fas fa-check"></i> Hybrid Architecture</li>
+                        <li><i class="fas fa-check"></i> Statistical Testing</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <a href="https://github.com/naveen-astra/forex-predictor-garch-lstm" class="footer-link">
+                        <i class="fab fa-github"></i> GitHub Repository
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Naveen Babu. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
