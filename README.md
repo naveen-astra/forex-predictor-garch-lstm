@@ -279,6 +279,51 @@ Edit `src/utils/config.py` directly. All scripts and notebooks read from this ce
 - Write comprehensive methodology and results sections
 - Economic evaluation (trading strategy simulation)
 
+### Phase 6: Big Data Integration (IN PROGRESS)
+
+**Step 1: Apache Spark Batch Processing** ✅ COMPLETE
+- Distributed preprocessing with PySpark DataFrames
+- Horizontal scalability for TB-scale data
+- Window functions for rolling aggregations
+- Parquet columnar output (train/val/test)
+- **File**: `src/spark/spark_batch_preprocessing.py` (717 lines)
+- **Documentation**: `docs/SPARK_BATCH_PREPROCESSING_SUMMARY.md`
+
+**Step 2: Spark Structured Streaming** ✅ COMPLETE
+- Real-time FOREX data ingestion pipeline
+- Micro-batch processing with configurable triggers
+- Fault-tolerant checkpointing for exactly-once semantics
+- File-based streaming source (academic demo)
+- **Files**: 
+  - `src/spark/spark_streaming_forex.py` (583 lines)
+  - `src/spark/demo_streaming_simple.py` (244 lines)
+- **Documentation**: `docs/SPARK_STREAMING_SUMMARY.md`
+
+**Step 3: Hadoop HDFS Integration** ✅ COMPLETE
+- Distributed storage layer with petabyte-scale capacity
+- HDFS directory structure (/forex/raw, /forex/batch_processed, etc.)
+- Environment-driven configuration (USE_HDFS flag)
+- HDFS-aware Spark batch and streaming wrappers
+- Automatic replication and fault tolerance
+- **Files**:
+  - `src/spark/hdfs_config.py` (287 lines)
+  - `src/spark/batch_preprocessing_hdfs.py` (269 lines)
+  - `src/spark/streaming_forex_hdfs.py` (280 lines)
+  - `setup_hdfs.sh` (151 lines)
+  - `verify_hdfs.sh` (237 lines)
+- **Documentation**: `docs/HDFS_INTEGRATION_SUMMARY.md`
+
+**Step 4: Apache Kafka Message Streaming** (PENDING)
+- Replace file-based source with message queue
+- Producer: FOREX API → Kafka
+- Consumer: Spark readStream from Kafka → process
+
+**Step 5: Cluster Deployment** (PENDING)
+- Multi-node Spark cluster with YARN/Kubernetes
+- Production deployment on AWS EMR or Azure HDInsight
+
+**Comprehensive Report**: `docs/BIG_DATA_INTEGRATION_REPORT.md`
+
 ---
 
 ## Reproducibility Guidelines
