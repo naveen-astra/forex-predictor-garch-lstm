@@ -313,16 +313,31 @@ Edit `src/utils/config.py` directly. All scripts and notebooks read from this ce
   - `verify_hdfs.sh` (237 lines)
 - **Documentation**: `docs/HDFS_INTEGRATION_SUMMARY.md`
 
-**Step 4: Apache Kafka Message Streaming** (PENDING)
+**Step 4: Execution Validation & Spark-Based Inference** ✅ COMPLETE
+- Comprehensive execution guide for Java 11, Spark, Hadoop setup
+- Spark-based hybrid inference script (load Parquet, run model)
+- Spark vs Pandas validation framework
+- Comparison tables (RMSE, MAE, Directional Accuracy)
+- Academic-quality validation methodology
+- **Files**:
+  - `src/spark/spark_hybrid_inference.py` (450+ lines)
+  - `docs/EXECUTION_GUIDE.md` (comprehensive setup guide)
+  - `docs/SPARK_VALIDATION_REPORT.md` (validation methodology)
+- **Status**: Ready for execution once hybrid model is trained
+
+**Step 5: Apache Kafka Message Streaming** (PENDING)
 - Replace file-based source with message queue
 - Producer: FOREX API → Kafka
 - Consumer: Spark readStream from Kafka → process
 
-**Step 5: Cluster Deployment** (PENDING)
+**Step 6: Cluster Deployment** (PENDING)
 - Multi-node Spark cluster with YARN/Kubernetes
 - Production deployment on AWS EMR or Azure HDInsight
 
-**Comprehensive Report**: `docs/BIG_DATA_INTEGRATION_REPORT.md`
+**Comprehensive Reports**: 
+- `docs/BIG_DATA_INTEGRATION_REPORT.md`
+- `docs/EXECUTION_GUIDE.md`
+- `docs/SPARK_VALIDATION_REPORT.md`
 
 ---
 
