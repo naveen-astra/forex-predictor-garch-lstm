@@ -87,10 +87,14 @@ sphinx==7.2.5                 # Documentation generation
 sphinx-rtd-theme==1.3.0       # ReadTheDocs theme
 
 # ----------------------------------------------------------------------------
-# Big Data (Optional - for future scaling)
+# Big Data Processing (Step 3: HDFS Integration)
 # ----------------------------------------------------------------------------
-# pyspark==3.4.1              # Apache Spark for big data processing
-# findspark==2.0.1            # Spark initialization helper
+pyspark==3.5.0                # Apache Spark for distributed data processing
+findspark==2.0.1              # Spark initialization helper
+
+# Note: Hadoop HDFS integration requires Hadoop 3.x installation
+# HDFS is managed externally (not a Python package)
+# Set environment variables: USE_HDFS=true, HDFS_HOST=hdfs://localhost:9000
 
 # ----------------------------------------------------------------------------
 # Notes:
