@@ -419,9 +419,6 @@ If you use this code in your research, please cite:
 ```bibtex
 @misc{forex_garch_lstm_2026,
   title={Intelligent FOREX Exchange Rate Forecasting using Hybrid GARCH-LSTM},
-  author={Research Team},
   year={2026},
-  institution={Amrita Vishwa Vidyapeetham},
-  note={Academic Project - Big Data Analytics}
 }
 ```
