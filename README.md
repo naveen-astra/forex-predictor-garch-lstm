@@ -257,6 +257,17 @@ Edit `src/utils/config.py` directly. All scripts and notebooks read from this ce
 - Model comparison and robustness checks
 - Output: `train_data_with_garch.csv`, `val_data_with_garch.csv`, `test_data_with_garch.csv`
 
+**ARIMA Baseline** ✅ COMPLETE
+- Classical time series baseline for comparison
+- Stationarity testing (ADF, KPSS)
+- Parameter identification via ACF/PACF analysis
+- Auto ARIMA for optimal (p,d,q) selection
+- Evaluation: RMSE, MAE, R², Directional Accuracy
+- **Files**:
+  - `src/models/arima_model.py` (650+ lines)
+  - `notebooks/02_arima_baseline.ipynb` (comprehensive theory, implementation, limitations)
+- **Purpose**: Establishes performance floor for univariate time series models
+
 ### Phase 3: LSTM Baseline (COMPLETE)
 - Built baseline LSTM without GARCH features (13 price-based features)
 - Architecture: 2-layer LSTM (200 units each), dropout 0.2, timesteps=4
