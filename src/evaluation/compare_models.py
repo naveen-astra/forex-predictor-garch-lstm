@@ -1,11 +1,17 @@
 """
-Model Comparison Script: ARIMA vs GARCH vs LSTM vs Hybrid
+Model Comparison Script: 7-Model Comprehensive Comparison
 
-This script loads predictions and metrics from all models and creates
-comprehensive comparison tables and visualizations.
+Compares all models:
+1. ARIMA - Classical time series
+2. GARCH - Volatility modeling
+3. LSTM - Deep learning baseline
+4. Hybrid GARCH-LSTM - Volatility + DL
+5. ARIMA-LSTM - Linear + Non-linear
+6. ARIMA-GARCH - Mean + Variance
+7. ARIMA-GARCH-LSTM - Complete hybrid
 
 Author: Naveen Babu
-Date: January 18, 2026
+Date: January 19, 2026
 """
 
 import sys
@@ -107,7 +113,11 @@ def plot_comparison_bar_charts(comparison_df: pd.DataFrame, output_dir: Path):
         print("⚠️ No test data available for plotting")
         return
     
-    fig, axes = plt.subplots(2, 2, figsize=(16, 12))
+    # Calculate number of models
+    n_models = len(test_data)
+    colors = plt.cm.tab10(range(n_models))  # Dynamic colors for all models
+    
+    fig, axes = plt.subplots(2, 2, figsize=(18, 14))
     axes = axes.flatten()
     
     for idx, metric in enumerate(metrics_to_plot):
@@ -118,12 +128,11 @@ def plot_comparison_bar_charts(comparison_df: pd.DataFrame, output_dir: Path):
         plot_data = test_data.sort_values(metric, ascending=ascending)
         
         # Bar plot
-        bars = ax.bar(range(len(plot_data)), plot_data[metric], 
-                      color=['#2E86AB', '#A23B72', '#F18F01', '#06A77D'])
+        bars = ax.bar(range(len(plot_data)), plot_data[metric], color=colors)
         
         # Customize
         ax.set_xticks(range(len(plot_data)))
-        ax.set_xticklabels(plot_data['Model'], rotation=0, fontsize=11)
+        ax.set_xticklabels(plot_data['Model'], rotation=45, ha='right', fontsize=10)
         ax.set_ylabel(metric, fontsize=12, fontweight='bold')
         ax.set_title(f'{metric} Comparison (Test Set)', fontsize=14, fontweight='bold')
         ax.grid(True, alpha=0.3, axis='y')
@@ -134,7 +143,7 @@ def plot_comparison_bar_charts(comparison_df: pd.DataFrame, output_dir: Path):
             label_format = '{:.6f}' if metric in ['RMSE', 'MAE'] else '{:.4f}' if metric == 'R²' else '{:.2f}'
             ax.text(bar.get_x() + bar.get_width()/2., height,
                    label_format.format(height),
-                   ha='center', va='bottom', fontsize=10, fontweight='bold')
+                   ha='center', va='bottom', fontsize=9, fontweight='bold')
     
     plt.tight_layout()
     output_path = output_dir / "model_comparison_test.png"
@@ -192,17 +201,22 @@ def main():
     print("="*80)
     print(" " * 25 + "MODEL COMPARISON")
     print("="*80)
+    print(" "*20 + "7-MODEL COMPREHENSIVE COMPARISON")
+    print("="*80)
     print(f"Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("="*80)
     
-    # Load results from all models
+    # Load results from all 7 models
     print("\n[INFO] Loading model results...")
     
     all_metrics = {
-        'arima': load_latest_results('arima_predictions'),
-        'garch': load_latest_results('garch_predictions'),
-        'lstm': load_latest_results('lstm_predictions'),
-        'hybrid': load_latest_results('hybrid_predictions'),
+        'ARIMA': load_latest_results('arima_predictions'),
+        'GARCH': load_latest_results('garch_predictions'),
+        'LSTM': load_latest_results('lstm_predictions'),
+        'Hybrid GARCH-LSTM': load_latest_results('hybrid_predictions'),
+        'ARIMA-LSTM': load_latest_results('arima_lstm_hybrid'),
+        'ARIMA-GARCH': load_latest_results('arima_garch_hybrid'),
+        'ARIMA-GARCH-LSTM': load_latest_results('arima_garch_lstm_hybrid'),
     }
     
     # Filter out None values

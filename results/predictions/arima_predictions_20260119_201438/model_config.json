@@ -1,0 +1,10 @@
+{
+  "model_type": "ARIMA",
+  "order": [
+    1,
+    0,
+    0
+  ],
+  "n_training_samples": 2774,
+  "timestamp": "2026-01-19T20:14:38.383726"
+}

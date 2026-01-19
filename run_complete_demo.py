@@ -1,14 +1,18 @@
 """
-🚀 FOREX GARCH-LSTM: Complete Demo Runner
-==========================================
+🚀 FOREX FORECASTING: 7-Model Complete Demo Runner
+====================================================
 Single-click execution of the entire pipeline:
 1. Data fetching
 2. Preprocessing
 3. GARCH modeling
-4. LSTM baseline
-5. Hybrid GARCH-LSTM
-6. Model comparison
-7. Dashboard launch
+4. ARIMA baseline
+5. LSTM baseline
+6. Hybrid GARCH-LSTM
+7. ARIMA-LSTM Hybrid
+8. ARIMA-GARCH Hybrid
+9. Complete ARIMA-GARCH-LSTM
+10. 7-Model comparison
+11. Dashboard launch
 
 Usage: python run_complete_demo.py
 
@@ -164,11 +168,11 @@ def main():
 {Colors.HEADER}{Colors.BOLD}
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                                                                              ║
-║                   FOREX GARCH-LSTM HYBRID MODEL                              ║
+║              FOREX 7-MODEL COMPREHENSIVE COMPARISON SYSTEM                   ║
 ║                     Complete Demo Pipeline                                   ║
 ║                                                                              ║
-║          Intelligent FOREX Exchange Rate Forecasting                         ║
-║          Using Hybrid GARCH-LSTM Architecture                                ║
+║          Intelligent FOREX Forecasting: Classical + DL + Hybrid              ║
+║          7 Models: ARIMA | GARCH | LSTM | 4 Hybrid Architectures            ║
 ║                                                                              ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 {Colors.END}
@@ -183,9 +187,10 @@ def main():
         print_error("Prerequisites check failed. Please install missing packages.")
         return
     
-    # Pipeline steps
-    total_steps = 9
+    # Pipeline steps - 7 models + data + preprocess + compare + summary + dashboard
+    total_steps = 12
     current_step = 0
+    start_time = time.time()
     
     # Step 1: Data Fetching
     current_step += 1
@@ -259,16 +264,52 @@ def main():
     else:
         script = PROJECT_ROOT / "src" / "models" / "hybrid_garch_lstm.py"
         if not run_script(script, "Hybrid GARCH-LSTM Training"):
-            print_error("Hybrid training failed.")
+            print_warning("Hybrid training failed. Continuing...")
     
-    # Step 7: Model Comparison
+    # Step 7: ARIMA-LSTM Hybrid
     current_step += 1
-    print_header(f"STEP {current_step}/{total_steps}: MODEL COMPARISON")
+    print_header(f"STEP {current_step}/{total_steps}: ARIMA-LSTM HYBRID MODEL")
+    
+    arima_lstm_results = list((PROJECT_ROOT / "results" / "predictions").glob("arima_lstm_hybrid_*"))
+    if arima_lstm_results:
+        print_warning("ARIMA-LSTM results exist. Skipping training...")
+    else:
+        script = PROJECT_ROOT / "src" / "models" / "arima_lstm_hybrid.py"
+        if not run_script(script, "ARIMA-LSTM Hybrid Training"):
+            print_warning("ARIMA-LSTM training failed. Continuing...")
+    
+    # Step 8: ARIMA-GARCH Hybrid
+    current_step += 1
+    print_header(f"STEP {current_step}/{total_steps}: ARIMA-GARCH HYBRID MODEL")
+    
+    arima_garch_results = list((PROJECT_ROOT / "results" / "predictions").glob("arima_garch_hybrid_*"))
+    if arima_garch_results:
+        print_warning("ARIMA-GARCH results exist. Skipping training...")
+    else:
+        script = PROJECT_ROOT / "src" / "models" / "arima_garch_hybrid.py"
+        if not run_script(script, "ARIMA-GARCH Hybrid Training"):
+            print_warning("ARIMA-GARCH training failed. Continuing...")
+    
+    # Step 9: Complete ARIMA-GARCH-LSTM
+    current_step += 1
+    print_header(f"STEP {current_step}/{total_steps}: COMPLETE ARIMA-GARCH-LSTM HYBRID")
+    
+    complete_hybrid_results = list((PROJECT_ROOT / "results" / "predictions").glob("arima_garch_lstm_hybrid_*"))
+    if complete_hybrid_results:
+        print_warning("Complete hybrid results exist. Skipping training...")
+    else:
+        script = PROJECT_ROOT / "src" / "models" / "arima_garch_lstm_hybrid.py"
+        if not run_script(script, "Complete Hybrid Training"):
+            print_warning("Complete hybrid training failed. Continuing...")
+    
+    # Step 10: Model Comparison (All 7 Models)
+    current_step += 1
+    print_header(f"STEP {current_step}/{total_steps}: 7-MODEL COMPARISON")
     
     script = PROJECT_ROOT / "src" / "evaluation" / "compare_models.py"
-    run_script(script, "Model Comparison")
+    run_script(script, "7-Model Comparison Analysis")
     
-    # Step 8: Generate Summary Report
+    # Step 11: Generate Summary Report
     current_step += 1
     print_header(f"STEP {current_step}/{total_steps}: GENERATING SUMMARY REPORT")
     
@@ -276,15 +317,15 @@ def main():
         from src.utils.config import RESULTS_DIR, FIGURES_DIR
         
         print(f"\n{Colors.BOLD}Results Summary:{Colors.END}")
-        print(f"  Models trained: ARIMA, GARCH, LSTM, Hybrid")
+        print(f"  Models trained: 7 (ARIMA, GARCH, LSTM, 4 Hybrids)")
         print(f"  Results directory: {RESULTS_DIR}")
         print(f"  Figures directory: {FIGURES_DIR}")
         
         # Count outputs
         predictions_dir = RESULTS_DIR / "predictions"
         if predictions_dir.exists():
-            pred_files = list(predictions_dir.glob("*_predictions_*"))
-            print(f"  Prediction files: {len(pred_files)}")
+            pred_files = list(predictions_dir.glob("*_*"))
+            print(f"  Prediction directories: {len(pred_files)}")
         
         if FIGURES_DIR.exists():
             fig_files = list(FIGURES_DIR.glob("*.png"))
@@ -295,7 +336,7 @@ def main():
     except Exception as e:
         print_warning(f"Could not generate summary: {e}")
     
-    # Step 9: Open Dashboard
+    # Step 12: Open Dashboard
     current_step += 1
     print_header(f"STEP {current_step}/{total_steps}: LAUNCHING DASHBOARD")
     
