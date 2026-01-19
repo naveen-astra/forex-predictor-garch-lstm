@@ -1,0 +1,13 @@
+{
+  "model_type": "ARIMA-GARCH Hybrid",
+  "arima_order": [
+    1,
+    0,
+    1
+  ],
+  "garch_order": [
+    1,
+    1
+  ],
+  "timestamp": "2026-01-19T21:24:34.468032"
+}
