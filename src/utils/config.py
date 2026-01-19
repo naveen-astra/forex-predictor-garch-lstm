@@ -135,9 +135,9 @@ PREPROCESSING_CONFIG = {
 # GARCH MODEL SETTINGS
 # ============================================================================
 GARCH_CONFIG = {
-    # Model parameters
-    'p': 1,  # GARCH lag order
-    'q': 1,  # ARCH lag order
+    # Model parameters - Using optimal order from ACF/PACF analysis
+    'p': 2,  # GARCH lag order (optimal: BIC = 14257.22)
+    'q': 1,  # ARCH lag order (optimal from ACF/PACF)
     'target_variable': 'Log_Returns',
     
     # Variants to test
