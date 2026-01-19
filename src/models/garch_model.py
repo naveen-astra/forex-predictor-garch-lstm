@@ -60,14 +60,14 @@ class GARCHModel:
         results: Model estimation results
     """
     
-    def __init__(self, p: int = 1, q: int = 1, dist: str = 'normal', 
+    def __init__(self, p: int = 2, q: int = 1, dist: str = 'normal', 
                  mean_model: str = 'Constant'):
         """
         Initialize GARCH model specification.
         
         Args:
-            p: GARCH lag order (default: 1)
-            q: ARCH lag order (default: 1)
+            p: GARCH lag order (default: 2 - optimal from ACF/PACF)
+            q: ARCH lag order (default: 1 - optimal from ACF/PACF)
             dist: Error distribution ('normal' or 't')
             mean_model: Mean equation specification ('Constant', 'Zero', 'AR')
         """
