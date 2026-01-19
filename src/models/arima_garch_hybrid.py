@@ -132,7 +132,7 @@ class ARIMAGARCHHybrid:
         print(f"    beta[1]: {self.garch_fitted.params['beta[1]']:.6f}")
         
         persistence = self.garch_fitted.params['alpha[1]'] + self.garch_fitted.params['beta[1]']
-        print(f"    Persistence (α+β): {persistence:.4f}")
+        print(f"    Persistence (alpha+beta): {persistence:.4f}")
         
         return self.garch_fitted
     
