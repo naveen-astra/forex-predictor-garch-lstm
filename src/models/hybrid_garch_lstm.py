@@ -29,10 +29,14 @@ Date: January 2026
 License: MIT
 """
 
+import sys
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(PROJECT_ROOT))
+
 import numpy as np
 import pandas as pd
 from typing import Tuple, Dict, List, Optional
-from pathlib import Path
 from src.models.lstm_model import LSTMForexModel
 from src.models.garch_model import GARCHModel
 
