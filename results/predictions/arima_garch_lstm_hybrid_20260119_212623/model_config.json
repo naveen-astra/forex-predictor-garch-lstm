@@ -1,0 +1,47 @@
+{
+  "model_type": "ARIMA-GARCH-LSTM Complete Hybrid",
+  "arima_order": [
+    1,
+    0,
+    1
+  ],
+  "garch_order": [
+    1,
+    1
+  ],
+  "lstm_config": {
+    "lstm_units": [
+      200,
+      200
+    ],
+    "dropout_rate": 0.2,
+    "recurrent_dropout": 0.2,
+    "activation": "tanh",
+    "return_sequences": [
+      true,
+      false
+    ],
+    "n_timesteps": 4,
+    "n_features": null,
+    "lag_order": 30,
+    "output_units": 1,
+    "output_activation": "linear",
+    "optimizer": "adam",
+    "learning_rate": 0.01,
+    "loss_function": "mse",
+    "metrics": [
+      "rmse",
+      "mae"
+    ],
+    "batch_size": 700,
+    "epochs": 60,
+    "validation_split": 0.3,
+    "shuffle": false,
+    "early_stopping_patience": 10,
+    "reduce_lr_patience": 5,
+    "reduce_lr_factor": 0.5,
+    "model_checkpoint_monitor": "val_loss",
+    "model_checkpoint_mode": "min"
+  },
+  "timestamp": "2026-01-19T21:26:23.493446"
+}
