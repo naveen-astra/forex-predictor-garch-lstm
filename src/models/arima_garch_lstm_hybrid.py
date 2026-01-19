@@ -101,8 +101,8 @@ class ARIMAGARCHLSTMHybrid:
         print(f"[INFO] ARIMA-GARCH-LSTM Complete Hybrid initialized")
         print(f"  ARIMA order: {arima_order}")
         print(f"  GARCH order: ({self.garch_params['p']}, {self.garch_params['q']})")
-        print(f"  LSTM units: {self.lstm_config['units']}")
-        print(f"  LSTM layers: {self.lstm_config['n_layers']}")
+        print(f"  LSTM units: {self.lstm_config.get('lstm_units', self.lstm_config.get('units', [200, 200]))}")
+        print(f"  LSTM layers: {len(self.lstm_config.get('lstm_units', [200, 200]))}")
     
     def fit_arima(self, train_data: pd.Series):
         """Stage 1: Fit ARIMA."""
@@ -157,23 +157,35 @@ class ARIMAGARCHLSTMHybrid:
         """Build LSTM architecture."""
         model = Sequential(name='ARIMA_GARCH_LSTM_Hybrid')
         
+        # Get LSTM units - handle both formats
+        lstm_units = self.lstm_config.get('lstm_units', self.lstm_config.get('units', [200, 200]))
+        if isinstance(lstm_units, list):
+            first_units = lstm_units[0]
+            second_units = lstm_units[1] if len(lstm_units) > 1 else lstm_units[0]
+            n_layers = len(lstm_units)
+        else:
+            first_units = second_units = lstm_units
+            n_layers = self.lstm_config.get('n_layers', 2)
+        
+        dropout_rate = self.lstm_config.get('dropout_rate', self.lstm_config.get('dropout', 0.2))
+        
         # First LSTM layer
         model.add(LSTM(
-            units=self.lstm_config['units'],
-            return_sequences=(self.lstm_config['n_layers'] > 1),
+            units=first_units,
+            return_sequences=(n_layers > 1),
             input_shape=input_shape,
             name='lstm_1'
         ))
-        model.add(Dropout(self.lstm_config['dropout'], name='dropout_1'))
+        model.add(Dropout(dropout_rate, name='dropout_1'))
         
         # Second LSTM layer
-        if self.lstm_config['n_layers'] > 1:
+        if n_layers > 1:
             model.add(LSTM(
-                units=self.lstm_config['units'],
+                units=second_units,
                 return_sequences=False,
                 name='lstm_2'
             ))
-            model.add(Dropout(self.lstm_config['dropout'], name='dropout_2'))
+            model.add(Dropout(dropout_rate, name='dropout_2'))
         
         # Output
         model.add(Dense(1, name='output'))
