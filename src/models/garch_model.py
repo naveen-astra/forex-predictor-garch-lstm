@@ -101,15 +101,13 @@ class GARCHModel:
             train_returns = returns
             
         # Specify GARCH model
-        distribution = Normal() if self.dist == 'normal' else StudentsT()
-        
         self.model = arch_model(
             train_returns,
             mean=self.mean_model,
             vol='GARCH',
             p=self.p,
             q=self.q,
-            dist=distribution,
+            dist=self.dist,
             rescale=False  # We already rescaled manually
         )
         
@@ -294,9 +292,9 @@ class GARCHModel:
         """
         from statsmodels.stats.diagnostic import acorr_ljungbox
         
-        result = acorr_ljungbox(residuals.dropna(), lags=lags, return_df=False)
+        result = acorr_ljungbox(residuals.dropna(), lags=lags, return_df=True)
         # Return the test statistic and p-value for the specified lag
-        return result[0][-1], result[1][-1]
+        return result.iloc[-1]['lb_stat'], result.iloc[-1]['lb_pvalue']
     
     def _arch_lm_test(self, residuals: pd.Series, lags: int = 10) -> Tuple[float, float]:
         """
